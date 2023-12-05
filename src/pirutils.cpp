@@ -1,13 +1,13 @@
 #include "pirutils.h"
 
-QueryParameters::QueryParameters(uint64_t log_poly_mod_degree, EqualityType eq_type, uint64_t hamming_weight, Database* db, uint64_t keyword_bitlength, uint64_t num_threads){
-    this->init(log_poly_mod_degree, eq_type, hamming_weight, db, num_threads);
+QueryParameters::QueryParameters(uint64_t log_poly_mod_degree, uint64_t prime_bitlength,EqualityType eq_type, uint64_t hamming_weight, Database* db, uint64_t keyword_bitlength, uint64_t num_threads){
+    this->init(log_poly_mod_degree, prime_bitlength,eq_type, hamming_weight, db, num_threads);
     this->set_db_parameters();
     this->keyword_bitlength = keyword_bitlength;
     this->set_query_specific_parameters();
 }
 
-void QueryParameters::init(uint64_t log_poly_mod_degree, EqualityType eq_type, uint64_t hamming_weight, Database* db_, uint64_t num_threads){
+void QueryParameters::init(uint64_t log_poly_mod_degree, uint64_t prime_bitlength,EqualityType eq_type, uint64_t hamming_weight, Database* db_, uint64_t num_threads){
     this->db_=db_;
     this->log_poly_mod_degree=log_poly_mod_degree;
     this->poly_mod_degree=1<<this->log_poly_mod_degree;

@@ -41,8 +41,8 @@ class QueryParameters{
     string write_path="";
     uint64_t num_threads=0;
 
-    QueryParameters(uint64_t log_poly_mod_degree, EqualityType eq_type, uint64_t hamming_weight, Database* db, uint64_t keyword_bitlength=0, uint64_t num_threads=0);
-    void init(uint64_t log_poly_mod_degree, EqualityType eq_type, uint64_t hamming_weight, Database* db_, uint64_t num_threads=0);
+    QueryParameters(uint64_t log_poly_mod_degree, uint64_t prime_bitlength,EqualityType eq_type, uint64_t hamming_weight, Database* db, uint64_t keyword_bitlength=0, uint64_t num_threads=0);
+    void init(uint64_t log_poly_mod_degree, uint64_t prime_bitlength,EqualityType eq_type, uint64_t hamming_weight, Database* db_, uint64_t num_threads=0);
     void print_db_specific_parameters();
     void add_parameters_to_metrics();
     void write_results_to_file();

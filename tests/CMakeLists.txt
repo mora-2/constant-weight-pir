@@ -5,9 +5,11 @@ project (test VERSION 1.0)
 find_package(SEAL)
 find_package(OpenMP)
 
-add_subdirectory(googletest) # add googletest subdirectory
+set(CMAKE_BUILD_TYPE Debug)
 
-include_directories(googletest/include) # this is so we can #include <gtest/gtest.h>
+# add_subdirectory(googletest) # add googletest subdirectory
+
+# include_directories(googletest/include) # this is so we can #include <gtest/gtest.h>
 
 add_executable(tests tests.cpp ../src/utils.cpp ../src/database.cpp ../src/pirutils.cpp ../src/PIRserver.cpp)
 

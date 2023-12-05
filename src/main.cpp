@@ -16,6 +16,7 @@ void simple_PIR(
         uint64_t hamming_weight,
         EqualityType eq_type,
         uint64_t log_poly_mod_degree,
+        uint64_t prime_bitlength,
         uint64_t number_of_keywords,
         uint64_t max_per_row_payload_byte_size,
         uint64_t keyword_bitlength,
@@ -29,7 +30,7 @@ void simple_PIR(
     }
 
     Database db(number_of_keywords, max_per_row_payload_byte_size*2, keyword_bitlength);
-    QueryParameters* query_parameters = new QueryParameters(log_poly_mod_degree, eq_type, hamming_weight, &db, keyword_bitlength, num_threads);
+    QueryParameters* query_parameters = new QueryParameters(log_poly_mod_degree, prime_bitlength, eq_type, hamming_weight, &db, keyword_bitlength, num_threads);
     query_parameters->write_path = write_path;
 
     Client c;
@@ -44,6 +45,7 @@ void show_usage(){
 int main(int argc, char *argv[]){ 
     uint64_t hamming_weight=2;
     uint64_t log_poly_mod_degree=13;
+    uint64_t prime_bitlength=21;
     EqualityType eq_type=Constant_Weight;
 
     uint64_t number_of_keywords=100;
@@ -82,7 +84,7 @@ int main(int argc, char *argv[]){
         if (opt == -1)
             break;
 
-        switch(opt){
+        switch(=){
             case 'h':
                 hamming_weight = stoi(optarg);
                 break;
@@ -124,6 +126,6 @@ int main(int argc, char *argv[]){
         max_per_row_payload_byte_size = (1 << log_poly_mod_degree)*5/ 2;
 
     std::cout << "Performing Simple PIR ..." << endl;
-    simple_PIR(hamming_weight, eq_type, log_poly_mod_degree, number_of_keywords, max_per_row_payload_byte_size, keyword_bitlength, verbose, write_path, num_threads);
+    simple_PIR(hamming_weight, eq_type, log_poly_mod_degree,prime_bitlength, number_of_keywords, max_per_row_payload_byte_size, keyword_bitlength, verbose, write_path, num_threads);
 
 }
